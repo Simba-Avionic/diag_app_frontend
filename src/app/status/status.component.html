@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <div class="row mt-3">
+        <div *ngFor="let ecu of this.ecu_lits" class="col-15 col-sm-6 col-md-4 col-lg-3 lesson-card">
+            <div class="card lesson-border">
+                <!-- <img class="card-img-top" src="{{lesson.image_path}}" alt="Card image cap"> -->
+                <div class="card-body">
+                    <h5 class="card-title">{{ecu.name_}}</h5>
+                    <p class="card-text"><b>Ip adress:</b> {{ecu.ip_}}</p>
+                    <p class="card-text"><b>Diagnostic address:</b> {{ecu.address_}}</p>
+                    <p class="card-text"><b>Uptime:</b>
+                        {{ecu.timestamp.GetH()}}:{{ecu.timestamp.GetMin()}}:{{ecu.timestamp.GetSec()}}</p>
+                    <div class="card-text"><b>Status: </b>
+                        <div *ngIf="ecu.status_!='Error'" [ngClass]="{'text-bg-primary': ecu.status_=='Online', 'text-bg-secondary': ecu.status_=='Offline'}"
+                            class="badge text-wrap ml-3" style="width: 6rem;">
+                            {{ecu.status_}}
+                        </div>
+                        <a *ngIf="ecu.status_=='Error'" class="badge link-light text-bg-danger text-wrap ml-3 text-white"
+                            style="width: 6rem; text-decoration: none; cursor: pointer;"
+                            (click)="ReadDtc(ecu.address_)">
+                            {{ecu.status_}}
+                        </a>
+                    </div>
+                    <div *ngIf="ecu.status_!='Offline'" class="container-fluid mt-3">
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip"
+                                    data-bs-placement="top" data-bs-title="Tooltip on top">Write</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-secondary">Read</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-info">Run</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-danger">Reboot</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

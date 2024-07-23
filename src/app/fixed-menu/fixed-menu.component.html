@@ -1,0 +1,11 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-bottom" data-bs-theme="dark">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+        </ul>
+      </div>
+      <button type="button" class="btn btn-info" [ngClass]="{'d-none': is_connected==false}" (click)="open()">
+        Console
+    </button>
+    </div>
+  </nav>
