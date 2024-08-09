@@ -7,16 +7,16 @@
                 <div class="container-fluid mt-3">
                     <div class="row">
                         <div class="col-8">
-                            <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+                            <select class="form-select form-select-lg mb-3" disabled aria-label="Large select example">
                                 <option *ngFor="let ecu of ecu_lits" value="{{ecu.address_}}">{{ecu.name_}} ({{ecu.address_}})</option>
                             </select>
 
                         </div>
                         <div class="col-2">
-                            <button type="button" class="btn btn-outline-info">Read DTC</button>
+                            <button type="button" class="btn btn-outline-info" (click)="ReadDtc()">Read DTC</button>
                         </div>
                         <div class="col-2">
-                            <button type="button" class="btn btn-outline-danger">Clear</button>
+                            <button type="button" class="btn btn-outline-danger" (click)="Clear()">Clear</button>
                         </div>
                     </div>
                     <div class="row">

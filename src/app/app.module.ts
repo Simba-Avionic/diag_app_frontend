@@ -14,6 +14,7 @@ import { UdsService } from './service/uds.service';
 import { ConsoleModalComponent } from './console-modal/console-modal.component';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { FormControl, FormsModule } from '@angular/forms';
+import { LiveAlertComponent } from './live-alert/live-alert.component';
 
 const socketIoConfig: SocketIoConfig = {
   url:'http://localhost:8080',
@@ -30,6 +31,7 @@ const socketIoConfig: SocketIoConfig = {
     SnapshotComponent,
     StatusComponent,
     ConsoleModalComponent,
+    LiveAlertComponent,
     
   ],
   imports: [

@@ -1,0 +1,6 @@
+<div >
+    <div *ngFor="let alert of alert_list" [ngClass]="{'alert-danger':alert.type==2,'alert-warning':alert.type==1,'alert-info':alert.type==1}" class="alert mb-0 alert-dismissible fade show" role="alert">
+        {{alert.content}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="Remove(alert.id)"></button>
+      </div>
+</div>
