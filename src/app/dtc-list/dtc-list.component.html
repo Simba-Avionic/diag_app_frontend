@@ -1,0 +1,85 @@
+<div class="container-lg mt-3">
+    <div class="row mb-3">
+        <div class="card lesson-border">
+            <!-- <img class="card-img-top" src="{{lesson.image_path}}" alt="Card image cap"> -->
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <div class="container-fluid mt-3">
+                    <div class="row">
+                        <div class="col-8">
+                            <select class="form-select form-select-lg mb-3" disabled aria-label="Large select example">
+                                <option *ngFor="let ecu of ecu_lits" value="{{ecu.address_}}">{{ecu.name_}} ({{ecu.address_}})</option>
+                            </select>
+
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-outline-info" (click)="ReadDtc()">Read DTC</button>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-outline-danger" (click)="Clear()">Clear</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckActive">
+                                <label class="form-check-label" for="flexCheckActive">
+                                    Show Active
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckExist">
+                                <label class="form-check-label" for="flexCheckExist">
+                                    Sow Exist
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckNoActive">
+                                <label class="form-check-label" for="flexCheckNoActive">
+                                    Show No Active
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngFor="let dtc of GetDtc()" class="row">
+        <div class="card lesson-border">
+            <!-- <img class="card-img-top" src="{{lesson.image_path}}" alt="Card image cap"> -->
+            <div class="card-body">
+                <div class="container-fluid mt-3">
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="row">
+                                <div class="col">
+                                    <h5>{{dtc.id_}} <span
+                                            [ngClass]="{'bg-danger': dtc.status=='Active','bg-warning': dtc.status=='Exist','bg-secondary': dtc.status=='No Active'}"
+                                            class="badge">{{dtc.status}}</span></h5>
+                                </div>
+                                <div class="col">
+                                    {{dtc.name_}}
+                                </div>
+                                <div class="col">{{dtc.ecu_}}</div>
+                            </div>
+                        </div>
+                        <div class="col-1">
+                            <button type="button" class="btn btn-outline-light">Info</button>
+                        </div>
+                        <div class="col-1">
+                            <button *ngIf=" dtc.status!='No Active'" type="button" class="btn btn-outline-success" (click)="OpenSnapshot(dtc)">Details</button>
+                        </div>
+                        <div class="col-1">
+                            <button *ngIf=" dtc.status!='No Active'" type="button" class="btn btn-outline-danger">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

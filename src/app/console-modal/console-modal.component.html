@@ -1,0 +1,30 @@
+<div class="modal-header">
+	<h4 class="modal-title">Console</h4>
+	<button type="button" class="btn-close" aria-label="Close"(click)="activeModal.dismiss('Cross click')">
+      </button>
+</div>
+<div class="modal-body">
+	<div class="card lesson-border">
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="20" disabled readonly>
+{{output}}
+        </textarea>
+	</div>
+    <div class="row mt-5">
+        <div class="form-floating mb-2">
+            <select class="form-select" id="floatingSelect" aria-label="Floating label select example" [(ngModel)]="msg.ecu_id">
+              <!-- <option selected>Select ECU</option> -->
+              <option *ngFor="let ecu of ecu_lits" value="{{ecu.address_}}">{{ecu.name_}} ({{this.ConvertString(ecu.address_)}}) status: {{ecu.status_}}</option>
+            </select>
+            <label for="floatingSelect">ECU</label>
+          </div>
+        <div class="input-group mb-3">
+            <input type="text" [(ngModel)]="msg.req" class="form-control" placeholder="UDS Request" aria-label="UDS Request" aria-describedby="button-addon2">
+            <button class="btn btn-outline-light" type="button" *ngIf="ecu_lits.length != 0" id="button-addon2" (click)="Send()">Send</button>
+            <button class="btn btn-outline-light" type="button" *ngIf="ecu_lits.length == 0" id="button-addon2" disabled (click)="Send()">Send</button>
+          </div>
+          
+        </div>
+</div>
+<div class="modal-footer">
+
+</div>
